@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3>Template Driven Form</h3>
+                </div>
+                <div class="card-body">
+                    <form #newUserForm="ngForm" (ngSubmit)="onSubmit(newUserForm)">
+                        <input type="text" placeholder="User name" required maxlength="25" 
+                        [(ngModel)]="userName" name="userName"
+                        #pickedName="ngModel" class="form-control">
+                        <div class="alert alert-danger" *ngIf="!pickedName.valid && pickedName.touched">
+                            User name is required!
+                        </div>
+                        <input class="form-control" type="email" placeholder="Email"
+                                required [(ngModel)]="email"
+                                name="email" #userEmail="ngModel">
+                        <div *ngIf="!userEmail.valid && userEmail.touched">
+                            Email is required!
+                        </div>
+                        <input class="form-control" type="text" placeholder="Nick name"
+                          [(ngModel)]="nickName" name="nickName">
+
+                        <input class="form-control" type="password" placeholder="Password" required
+                          [(ngModel)]="password" name="password"
+                          #userPassword="ngModel">
+                        <div *ngIf="!userPassword.valid && userPassword.touched">
+                         Password is required!
+                          </div>
+                         <button class="form-control" type="submit" [disabled]="!newUserForm.form.valid">
+                           Register
+                          </button>
+
+                         <button class="form-control" type="button" (click)="newUserForm.reset()">
+                             Reset
+                         </button>
+                         <pre>{{ newUserForm.form.value | json }}</pre>
+
+
+
+
+
+
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

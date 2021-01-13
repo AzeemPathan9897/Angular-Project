@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-col-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Students Records</h3>  <button><a routerLink="/formbutton">Add New Students</a></button>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Delete</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let student of students">
+                                <td>{{student.id}}</td>
+                                <td>{{student.fname}}</td>
+                                <td>{{student.lname}}</td>
+                                <td>{{student.email}}</td>
+                                <td><button (click)="delete(student)" title="Delete {{student.fname}}"><span class="fa fa-trash fa-2x text-danger"></span></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

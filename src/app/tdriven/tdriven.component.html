@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-06">
+            <div class=" card card-info">
+                <div class="card-header">
+                    <h3>template of driven form</h3>
+                </div>
+               <div class="card-body">
+                   <form #DrivenForm="ngForm" (ngSubmit)="onSubmit(DrivenForm)">
+                       <input type="text" placeholder="username" required maxlength="20"
+                       [(ngModel)]="userName" name="userName"
+                       #pickedName="ngModel" class="form-control">
+                       <div *ngIf="!pickedName.valid && pickedName.touched">
+                           username is required
+                       </div>
+                       <!-- nickname -->
+                       <input class="form-control" type="text" placeholder="NickName"
+                       [(ngModel)]="nickname" name="nickname">
+                       <!-- email -->
+                       <input class="form-control" type="text" placeholder="Email"
+                       required [(ngModel)]="email" name="email"
+                        #pickedEmail="ngModel">
+                        <div *ngIf="!pickedEmail.valid && pickedEmail.touched">
+                            Email is required!
+                        </div>
+                        <!-- password -->
+                        <input class="form-control" type="text" placeholder="password" required
+                        maxlength="20" [(ngModel)]="password" name="password"
+                        #pickedPasswod ="ngModel">
+                        <div *ngIf="!pickedPassword.valid && pickedPassword.touched">
+                            password is required
+                        </div>
+        <button class="form-control" type="submit" [disabled]="!DrivenForm.form.valid">
+            Registration
+        </button>       
+        <button class="form-control" type="button" (click)="DrivenForm.reset()">
+            Reset
+        </button>
+        <pre>{{ DrivenForm.form.value | json }}</pre>
+</form>
+      
+            </div>
+        </div>
+    </div>
+</div>
+
+
+           
